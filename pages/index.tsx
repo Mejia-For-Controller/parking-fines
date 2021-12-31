@@ -6,6 +6,8 @@ import './../node_modules/mapbox-gl/dist/mapbox-gl.css'
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import './../node_modules/@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 
+import Nav from '../components/nav'
+
 import React, {useEffect} from 'react';
  
 const councildistricts = require('./CouncilDistricts.json')
@@ -93,17 +95,16 @@ map.addControl(new mapboxgl.NavigationControl());
   }, [])
 
   return (
-  <div>
-         
-         <div
-      className=' outsideTitle max-h-screen flex-col flex z-50'
-    >
-      <div className='titleBox max-h-screen mt-2 ml-2 md:mt-3 md:ml-3 break-words'>2021 Parking Citations Los Angeles</div>
-</div>
+  
+  <div className='h-screen flex flex-col'>
+  <Nav/>     
+        
+  <div className='titleBox max-h-screen fixed mt-[3.8em] ml-2 md:mt-[3.8em] md:ml-3 break-words'>2021 Parking Citations Los Angeles</div>
 
     <div ref={divRef} style={{
 
-    }} className="map-container" />
+    }} className="map-container h-full" />
+     
     </div>
   )
 }
