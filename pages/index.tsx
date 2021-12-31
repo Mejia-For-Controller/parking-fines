@@ -6,8 +6,11 @@ import 'mapbox-gl/dist/mapbox-gl.css'
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 
+/* tslint:disable */
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
+/* tslint:enable */
+
 import React, {useEffect} from 'react';
  
 const councildistricts = require('./CouncilDistricts.json')
