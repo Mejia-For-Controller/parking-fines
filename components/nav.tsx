@@ -14,7 +14,7 @@ const navigationPayroll = [
 function Nav() {
   return <div className="bg-[#1a1a1a] flex flex-col">
     <nav className="flex flex-row  h-content">
-      {navigationPayroll.map((item:any, itemIdx) =>
+      {navigationPayroll.map((item:any, itemIdx:any) =>
                      
               
                      <ActiveLink activeClassName="text-gray-100 py-3 px-6 block hover:text-green-300 focus:outline-none text-green-300 border-b-2 font-medium border-green-300" href={item.url}

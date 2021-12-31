@@ -34,8 +34,4 @@ const ActiveLink = (propsparam:any) => {
   )
 }
 
-ActiveLink.propTypes = {
-  activeClassName: PropTypes.string.isRequired,
-}
-
 export default ActiveLink
