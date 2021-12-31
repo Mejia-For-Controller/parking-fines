@@ -17,7 +17,7 @@ import * as turf from '@turf/turf'
        import { assertDeclareExportAllDeclaration } from '@babel/types';
 
 const Home: NextPage = () => {
-  const divRef = React.useRef<HTMLDivElement>(null);
+  const divRef:any = React.useRef<HTMLDivElement>(null);
 
   useEffect(() => {
         console.log('map div', divRef)
@@ -26,7 +26,7 @@ const Home: NextPage = () => {
           console.log('app render')
         }
 
-        mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
+       // mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
 //import locations from './features.geojson'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiY29tcmFkZWt5bGVyIiwiYSI6ImNrdjBkOXNyeDdscnoycHE2cDk4aWJraTIifQ.77Gid9mgpEdLpFszO5n4oQ';
