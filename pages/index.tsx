@@ -8,7 +8,7 @@ import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 
 /* tslint:disable */
 // eslint-disable-next-line import/no-webpack-loader-syntax
-import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
+import MapboxWorker from 'mapbox-gl/dist/mapbox-gl-csp-worker';
 /* tslint:enable */
 
 import React, {useEffect} from 'react';
