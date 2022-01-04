@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
+import MapboxLanguage from '@mapbox/mapbox-gl-language';
 
 
 import Nav from '../components/nav'
@@ -64,7 +65,21 @@ const map = new mapboxgl.Map({
   zoom: 9 // starting zoom
 });
 
+try {
+//multilingual support
+//right to left allows arabic rendering
+mapboxgl.setRTLTextPlugin('https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.10.1/mapbox-gl-rtl-text.js', (callbackinfo:any) => {
+  console.log(callbackinfo)
+});
 
+const language = new MapboxLanguage();
+map.addControl(language);
+
+}
+
+catch (error) {
+  console.error(error)
+}
 const geocoder:any = new MapboxGeocoder({
   accessToken: mapboxgl.accessToken,
   mapboxgl: map,
@@ -170,10 +185,12 @@ window.addEventListener('resize', () => {
 
 map.on('load', () => {
 
+if (! document.querySelector(".mapboxgl-ctrl-top-right > .mapboxgl-ctrl-geocoder")) {
+  map.addControl(
+    geocoder2
+    ); 
+}
 
-map.addControl(
-  geocoder2
-  );
 
  checkHideOrShowTopRightGeocoder()
 
@@ -210,7 +227,7 @@ map.addControl(new mapboxgl.NavigationControl());
       className=' outsideTitle max-h-screen flex-col flex z-50'
     >
         
-  <div className='titleBox max-h-screen fixed mt-[3.8em] ml-2 md:mt-[3.8em] md:ml-3 break-words'>2021 Parking Citations Los Angeles</div>
+  <div className='titleBox max-h-screen fixed mt-[3.8em] ml-2 md:mt-[3.8em] md:ml-3 break-words'>2021 Parking Citations LA</div>
 
   <div
     className={`geocoder md:hidden mt-[7.5em] xs:text-sm sm:text-base md:text-lg`} id='geocoder'></div>

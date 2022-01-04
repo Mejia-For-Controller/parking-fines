@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@mapbox/mapbox-gl-geocoder": "^4.7.4",
+    "@mapbox/mapbox-gl-language": "^1.0.0",
     "@types/turf": "^3.5.32",
     "mapbox-gl": "^2.6.1",
     "next": "12.0.7",
