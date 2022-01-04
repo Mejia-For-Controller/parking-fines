@@ -26,9 +26,11 @@ const Home: NextPage = () => {
     var toprightgeocoderbox:any = toprightbox.querySelector(".mapboxgl-ctrl-geocoder");
     if (toprightgeocoderbox) {
       if (window.innerWidth >= 768) {
+        console.log('changing to block')
         toprightgeocoderbox.style.display = 'block'
       } else {
         toprightgeocoderbox.style.display = 'none'
+        console.log('hiding')
       }
     }
    }
@@ -161,7 +163,10 @@ geocoder.on('select', function(object:any){
 }
 
 
-window.addEventListener('resize', handleResize);  
+window.addEventListener('resize', () => {
+  console.log('resize')
+  handleResize()
+});  
 
 map.on('load', () => {
 
@@ -208,7 +213,7 @@ map.addControl(new mapboxgl.NavigationControl());
   <div className='titleBox max-h-screen fixed mt-[3.8em] ml-2 md:mt-[3.8em] md:ml-3 break-words'>2021 Parking Citations Los Angeles</div>
 
   <div
-    className={`geocoder md:hidden mt-[7.5em]`} id='geocoder'></div>
+    className={`geocoder md:hidden mt-[7.5em] xs:text-sm sm:text-base md:text-lg`} id='geocoder'></div>
 </div>
     <div ref={divRef} style={{
 
