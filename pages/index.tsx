@@ -1,10 +1,9 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-import './../node_modules/mapbox-gl/dist/mapbox-gl.css'
+
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
-import './../node_modules/@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
+
 
 import Nav from '../components/nav'
 
@@ -19,6 +18,29 @@ import * as turf from '@turf/turf'
        import { assertDeclareExportAllDeclaration } from '@babel/types';
 
 const Home: NextPage = () => {
+
+
+  function checkHideOrShowTopRightGeocoder() {
+    var toprightbox = document.querySelector(".mapboxgl-ctrl-top-right")
+   if (toprightbox) {
+    var toprightgeocoderbox:any = toprightbox.querySelector(".mapboxgl-ctrl-geocoder");
+    if (toprightgeocoderbox) {
+      if (window.innerWidth >= 768) {
+        toprightgeocoderbox.style.display = 'block'
+      } else {
+        toprightgeocoderbox.style.display = 'none'
+      }
+    }
+   }
+  }
+
+  var handleResize = () => {
+    checkHideOrShowTopRightGeocoder()
+
+  
+  }
+
+
   const divRef:any = React.useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -40,40 +62,115 @@ const map = new mapboxgl.Map({
   zoom: 9 // starting zoom
 });
 
-map.on('load', () => {
-  map.addLayer({
-    id: 'citybound',
-    type: 'line',
-    source: {
-      type: 'geojson',
-      data: councildistricts
-    },
-    paint: {
-      "line-color": '#ddddff',
-      'line-opacity': 0.0,
-      'line-width': 2
-    }
-  })
-  
-  
-  
-  
-  
-  
-  map.addLayer({
-    id: 'cityboundfill',
-    type: 'fill',
-    source: {
-      type: 'geojson',
-      data:  councildistricts
-    },
-    paint: {
-      'fill-color': '#ddffdd',
-      'fill-opacity': 0.009
-    }
-  });
-})
 
+const geocoder:any = new MapboxGeocoder({
+  accessToken: mapboxgl.accessToken,
+  mapboxgl: map,
+  proximity: {
+    longitude: -118.41,
+    latitude: 34
+  },
+  marker: true
+  });
+
+  var colormarker = new mapboxgl.Marker({
+    color: '#41ffca'
+  });
+
+  const geocoderopt:any = 
+    {
+      accessToken: mapboxgl.accessToken,
+      mapboxgl: mapboxgl,
+      marker: {
+        color: '#41ffca'
+      }
+      }
+  
+
+  const geocoder2 = new MapboxGeocoder(geocoderopt);
+  const geocoder3 = new MapboxGeocoder(geocoderopt);
+
+
+ 
+     
+geocoder.on('result', (event:any) => {
+  var singlePointSet:any = map.getSource('single-point')
+  singlePointSet.setData(event.result.geometry);
+  console.log('event.result.geometry',event.result.geometry)
+  console.log('geocoderesult', event)
+});
+
+geocoder.on('select', function(object:any){
+  var coord = object.feature.geometry.coordinates;
+  var singlePointSet:any = map.getSource('single-point')
+  singlePointSet.setData(object.feature.geometry);
+});
+
+var geocoderId = document.getElementById('geocoder')
+
+
+
+if (geocoderId) {
+  console.log(
+  'geocoder div found'
+  )
+
+  if (!document.querySelector(".geocoder input")) {
+    geocoderId.appendChild(geocoder3.onAdd(map));
+
+    var inputMobile = document.querySelector(".geocoder input");
+
+    try {
+      var loadboi =  document.querySelector('.mapboxgl-ctrl-geocoder--icon-loading')
+      if (loadboi) {
+        var brightspin:any = loadboi.firstChild;
+     if (brightspin) {
+      brightspin.setAttribute('style', 'fill: #e2e8f0');
+     }
+     var darkspin:any = loadboi.lastChild;
+     if (darkspin) {
+      darkspin.setAttribute('style', 'fill: #94a3b8');
+     }
+      }
+     
+    } catch (err) {
+      console.error(err)
+    }
+  
+    if (inputMobile) {
+      inputMobile.addEventListener("focus", () => {
+        //make the box below go away
+       
+        });
+    }
+  }
+
+
+geocoder.on('result', (event:any) => {
+  var singlePointSet:any = map.getSource('single-point')
+  singlePointSet.setData(event.result.geometry);
+  console.log('event.result.geometry',event.result.geometry)
+  console.log('geocoderesult', event)
+});
+
+geocoder.on('select', function(object:any){
+  var coord = object.feature.geometry.coordinates;
+  var singlePointSet:any = map.getSource('single-point')
+  singlePointSet.setData(object.feature.geometry);
+});
+}
+
+
+window.addEventListener('resize', handleResize);  
+
+map.on('load', () => {
+
+
+map.addControl(
+  geocoder2
+  );
+
+ checkHideOrShowTopRightGeocoder()
 
 // Add zoom and rotation controls to the map.
 map.addControl(new mapboxgl.NavigationControl());
@@ -90,6 +187,10 @@ map.addControl(new mapboxgl.NavigationControl());
     showUserHeading: true
     })
   );
+
+  checkHideOrShowTopRightGeocoder()
+});
+
        
 
   }, [])
@@ -98,9 +199,17 @@ map.addControl(new mapboxgl.NavigationControl());
   
   <div className='h-screen flex flex-col'>
   <Nav/>     
+
+           
+  <div
+      className=' outsideTitle max-h-screen flex-col flex z-50'
+    >
         
   <div className='titleBox max-h-screen fixed mt-[3.8em] ml-2 md:mt-[3.8em] md:ml-3 break-words'>2021 Parking Citations Los Angeles</div>
 
+  <div
+    className={`geocoder md:hidden mt-[7.5em]`} id='geocoder'></div>
+</div>
     <div ref={divRef} style={{
 
     }} className="map-container h-full" />
@@ -109,4 +218,4 @@ map.addControl(new mapboxgl.NavigationControl());
   )
 }
 
-export default Home
+export default Home;
