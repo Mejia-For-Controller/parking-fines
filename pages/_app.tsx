@@ -7,6 +7,14 @@ import './App.css';
 import './../node_modules/@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import './mapboxdark.css';
 
+import TagManager from 'react-gtm-module'
+
+const tagManagerArgs = {
+  gtmId: 'GTM-MQG62S5'
+}
+
+TagManager.initialize(tagManagerArgs)
+
 function MyApp({ Component, pageProps }: AppProps) {
   return <Component {...pageProps} />
 }

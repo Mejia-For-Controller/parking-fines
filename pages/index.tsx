@@ -37,7 +37,7 @@ const Home: NextPage = () => {
    }
   }
 
-  var handleResize = () => {
+  const handleResize = () => {
     checkHideOrShowTopRightGeocoder()
 
   
@@ -58,11 +58,19 @@ const Home: NextPage = () => {
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiY29tcmFkZWt5bGVyIiwiYSI6ImNrdjBkOXNyeDdscnoycHE2cDk4aWJraTIifQ.77Gid9mgpEdLpFszO5n4oQ';
  
+const formulaForZoom = () => {
+  if (window.innerWidth > 700) {
+    return 10
+  } else { 
+    return 9.1
+  }
+}
+
 const map = new mapboxgl.Map({
   container: divRef.current, // container ID
   style: 'mapbox://styles/comradekyler/ckxslkfs7kemm15mpb8700qoq', // style URL
   center: [-118.41,34], // starting position [lng, lat]
-  zoom: 9 // starting zoom
+  zoom: formulaForZoom() // starting zoom
 });
 
 try {
@@ -178,10 +186,7 @@ geocoder.on('select', function(object:any){
 }
 
 
-window.addEventListener('resize', () => {
-  console.log('resize')
-  handleResize()
-});  
+window.addEventListener('resize',  handleResize);  
 
 map.on('load', () => {
 
@@ -220,6 +225,34 @@ map.addControl(new mapboxgl.NavigationControl());
   return (
   
   <div className='h-screen flex flex-col'>
+      <Head>
+     <meta charSet="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+<meta
+name="description"
+content="Heatmap of Top Parking Fine Locations in Los Angeles."
+/>
+<title>Parking Fines Los Angeles Interactive Map - Mejia For Controller</title>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:site" content="@kennethmejiala"/>
+<meta name="twitter:creator" content="@kennethmejiala"/>
+<meta name="twitter:title" content="Parking Fines Los Angeles Interactive Map"/>
+<meta name="twitter:description" content="View interactive heatmap of 2021 parking fines in LA. See most ticketed parking spots and explore data."/>
+<meta name="description" content="View interactive heatmap of 2021 parking fines in LA. See most ticketed parking spots and explore data." />
+<meta name="twitter:image" content="https://ParkingFinesLA.mejiaforcontroller.com/preview.png"/>
+<link rel="icon" href="https://mejiaforcontroller.com/wp-content/uploads/2020/12/cropped-favicon-1-32x32.png" sizes="32x32"/>
+<link rel="icon" href="https://mejiaforcontroller.com/wp-content/uploads/2020/12/cropped-favicon-1-192x192.png" sizes="192x192"/>
+<link rel="apple-touch-icon" href="https://mejiaforcontroller.com/wp-content/uploads/2020/12/cropped-favicon-1-180x180.png"/>
+<meta name="msapplication-TileImage" content="https://mejiaforcontroller.com/wp-content/uploads/2020/12/cropped-favicon-1-270x270.png"/>
+
+
+<meta property="og:url"                content="https://ParkingFinesLA.mejiaforcontroller.com" />
+<meta property="og:type"               content="website" />
+<meta property="og:title"              content="Parking Fines Los Angeles Interactive Map" />
+<meta property="og:description"        content="View interactive heatmap of 2021 parking fines in LA. See most ticketed parking spots and explore data." />
+<meta property="og:image"              content="https://ParkingFinesLA.mejiaforcontroller.com/preview.png" />
+      </Head>
+   
   <Nav/>     
 
            
@@ -236,6 +269,16 @@ map.addControl(new mapboxgl.NavigationControl());
 
     }} className="map-container h-full" />
      
+     <div className={`absolute md:mx-auto z-9 bottom-2 left-1 md:left-1/2 md:transform md:-translate-x-1/2`}>
+<a href='https://mejiaforcontroller.com/' target="_blank" rel="noreferrer">
+    
+  
+                  <img src='/mejia-watermark-smol.png' className='h-9 md:h-10'></img>
+                  
+    </a>
+  
+                </div>
+
     </div>
   )
 }
