@@ -73,12 +73,17 @@ const map = new mapboxgl.Map({
   zoom: formulaForZoom() // starting zoom
 });
 
+var rtldone=false;
+
 try {
-//multilingual support
+if (rtldone  === false) {
+  //multilingual support
 //right to left allows arabic rendering
 mapboxgl.setRTLTextPlugin('https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.10.1/mapbox-gl-rtl-text.js', (callbackinfo:any) => {
-  console.log(callbackinfo)
+  console.log(callbackinfo);
+  rtldone = true;
 });
+}
 
 const language = new MapboxLanguage();
 map.addControl(language);
@@ -224,7 +229,7 @@ map.addControl(new mapboxgl.NavigationControl());
 
   return (
   
-  <div className='flex flex-col'>
+  <div className='flex flex-col h-screen w-screen absolute'>
       <Head>
      <meta charSet="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
@@ -253,21 +258,25 @@ content="Heatmap of Top Parking Fine Locations in Los Angeles."
 <meta property="og:image"              content="https://ParkingTicketsLA.mejiaforcontroller.com/preview.png" />
       </Head>
    
-  <Nav/>     
-
+  <div className='flex-none'>
+    <Nav/>
+  </div>
            
   <div
-      className=' outsideTitle  flex-col flex z-50'
+      className='flex-initial h-content outsideTitle flex-col flex z-50'
     >
-        
+
+
   <div className='titleBox  fixed mt-[3.8em] ml-2 md:mt-[3.8em] md:ml-3 break-words'>2021 Parking Tickets LA</div>
 
   <div
     className={`geocoder md:hidden mt-[7.5em] xs:text-sm sm:text-base md:text-lg`} id='geocoder'></div>
 </div>
-    <div ref={divRef} style={{
 
-    }} className="map-container h-full" />
+<div ref={divRef} style={{
+
+}} className="map-container w-full h-full " />
+        
      
      <div className={`absolute md:mx-auto z-9 bottom-2 left-1 md:left-1/2 md:transform md:-translate-x-1/2`}>
 <a href='https://MejiaForController.com/' target="_blank" rel="noreferrer">
