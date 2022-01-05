@@ -12,8 +12,8 @@ const navigationPayroll = [
 ]
 
 function Nav() {
-  return <div className="bg-[#1a1a1a] flex flex-col">
-    <nav className="flex flex-row  h-content">
+  return <div className="z-50 bg-[#1a1a1a] flex flex-col">
+    <nav className="z-50 flex flex-row  h-content">
       {navigationPayroll.map((item:any, itemIdx:any) =>
                      
               
