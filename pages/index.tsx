@@ -11,6 +11,7 @@ import Nav from '../components/nav'
 import React, {useEffect} from 'react';
  
 const councildistricts = require('./CouncilDistricts.json')
+const citybounds = require('./citybounds.json')
 import * as turf from '@turf/turf'
 
     // added the following 6 lines.
@@ -203,6 +204,40 @@ if (! document.querySelector(".mapboxgl-ctrl-top-right > .mapboxgl-ctrl-geocoder
 
 
  checkHideOrShowTopRightGeocoder()
+
+ if (true) {
+  map.addLayer({
+    id: 'citybound',
+    type: 'line',
+    source: {
+      type: 'geojson',
+      data:  citybounds
+    },
+    paint: {
+      "line-color": '#41ffca',
+      'line-opacity': 1,
+      'line-width': 3
+    }
+  })
+
+ 
+
+
+
+
+  map.addLayer({
+    id: 'cityboundfill',
+    type: 'fill',
+    source: {
+      type: 'geojson',
+      data:  citybounds
+    },
+    paint: {
+      'fill-color': '#dddddd',
+      'fill-opacity': 0.02
+    }
+  })
+}
 
 // Add zoom and rotation controls to the map.
 map.addControl(new mapboxgl.NavigationControl());
