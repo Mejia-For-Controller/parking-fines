@@ -146,8 +146,14 @@
       top: 2px !important;
     }
 
-
+     div.mapboxgl-control-container > div.mapboxgl-ctrl-bottom-right > div {
+         display: hidden;
+     }
 
 .map-container {
   
+}
+
+.mapboxgl-ctrl-logo {
+    display: 'none'
 }

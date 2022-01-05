@@ -273,7 +273,7 @@ content="Heatmap of Top Parking Fine Locations in Los Angeles."
 <a href='https://MejiaForController.com/' target="_blank" rel="noreferrer">
     
   
-                  <img src='/mejia-watermark-smol.png' className='h-9 md:h-10' alt="Kenneth Mejia for LA City Controller Logo"></img>
+                  <img src='/mejia-watermark-smol.png' className='h-9 md:h-10' alt="Kenneth Mejia for LA City Controller Logo"/>
                   
     </a>
   
