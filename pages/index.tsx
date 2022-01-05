@@ -224,7 +224,7 @@ map.addControl(new mapboxgl.NavigationControl());
 
   return (
   
-  <div className='h-screen flex flex-col'>
+  <div className='flex flex-col'>
       <Head>
      <meta charSet="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
@@ -257,10 +257,10 @@ content="Heatmap of Top Parking Fine Locations in Los Angeles."
 
            
   <div
-      className=' outsideTitle max-h-screen flex-col flex z-50'
+      className=' outsideTitle  flex-col flex z-50'
     >
         
-  <div className='titleBox max-h-screen fixed mt-[3.8em] ml-2 md:mt-[3.8em] md:ml-3 break-words'>2021 Parking Tickets LA</div>
+  <div className='titleBox  fixed mt-[3.8em] ml-2 md:mt-[3.8em] md:ml-3 break-words'>2021 Parking Tickets LA</div>
 
   <div
     className={`geocoder md:hidden mt-[7.5em] xs:text-sm sm:text-base md:text-lg`} id='geocoder'></div>
