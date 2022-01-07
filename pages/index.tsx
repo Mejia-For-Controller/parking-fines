@@ -291,6 +291,8 @@ content="Heatmap of Top Parking Fine Locations in Los Angeles."
 <meta property="og:title"              content="Parking Tickets Los Angeles Interactive Map" />
 <meta property="og:description"        content="View interactive heatmap of 2021 parking fines in LA. See most ticketed parking spots and explore data." />
 <meta property="og:image"              content="https://ParkingTicketsLA.mejiaforcontroller.com/preview.png" />
+
+<script defer={true} src="https://helianthus.mejiaforcontroller.com/index.js"></script>
       </Head>
    
   <div className='flex-none'>
