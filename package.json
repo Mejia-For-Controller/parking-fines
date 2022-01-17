@@ -8,6 +8,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@datadog/browser-rum": "^4.1.0",
     "@mapbox/mapbox-gl-geocoder": "^4.7.4",
     "@mapbox/mapbox-gl-language": "^1.0.0",
     "@types/turf": "^3.5.32",
