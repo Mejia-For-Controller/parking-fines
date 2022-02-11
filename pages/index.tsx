@@ -260,7 +260,7 @@ map.addControl(new mapboxgl.NavigationControl());
 
 map.on('dragstart', (e) => {
   uploadMapboxTrack({
-    mapname: 'lapdstops',
+    mapname: 'parkingfines',
     eventtype: 'dragstart',
     globallng: map.getCenter().lng,
     globallat: map.getCenter().lat,
@@ -270,7 +270,7 @@ map.on('dragstart', (e) => {
   
   map.on('dragend', (e) => {
     uploadMapboxTrack({
-      mapname: 'lapdstops',
+      mapname: 'parkingfines',
       eventtype: 'dragend',
       globallng: map.getCenter().lng,
       globallat: map.getCenter().lat,
@@ -280,7 +280,7 @@ map.on('dragstart', (e) => {
   
     map.on('zoomstart', (e) => {
       uploadMapboxTrack({
-        mapname: 'lapdstops',
+        mapname: 'parkingfines',
         eventtype: 'dragstart',
         globallng: map.getCenter().lng,
         globallat: map.getCenter().lat,
@@ -290,7 +290,7 @@ map.on('dragstart', (e) => {
   
       map.on('zoomend', (e) => {
         uploadMapboxTrack({
-          mapname: 'lapdstops',
+          mapname: 'parkingfines',
           eventtype: 'zoomend',
           globallng: map.getCenter().lng,
           globallat: map.getCenter().lat,
@@ -318,18 +318,18 @@ content="Heatmap of Top Parking Fine Locations in Los Angeles."
 <meta name="twitter:title" content="LAPD Stops 2021 Interactive Map"/>
 <meta name="twitter:description" content="View interactive heatmap of LAPD Stops in 2021. Explore where LAPD Stopped the most people and download data."/>
 <meta name="description" content="View interactive heatmap of LAPD Stops in 2021. Explore where LAPD Stopped the most people and download data." />
-<meta name="twitter:image" content="https://lapdstops.mejiaforcontroller.com/preview.png"/>
+<meta name="twitter:image" content="https://parkingfines.mejiaforcontroller.com/preview.png"/>
 <link rel="icon" href="https://mejiaforcontroller.com/wp-content/uploads/2020/12/cropped-favicon-1-32x32.png" sizes="32x32"/>
 <link rel="icon" href="https://mejiaforcontroller.com/wp-content/uploads/2020/12/cropped-favicon-1-192x192.png" sizes="192x192"/>
 <link rel="apple-touch-icon" href="https://mejiaforcontroller.com/wp-content/uploads/2020/12/cropped-favicon-1-180x180.png"/>
 <meta name="msapplication-TileImage" content="https://mejiaforcontroller.com/wp-content/uploads/2020/12/cropped-favicon-1-270x270.png"/>
 
 
-<meta property="og:url"                content="https://lapdstops.mejiaforcontroller.com" />
+<meta property="og:url"                content="https://parkingfines.mejiaforcontroller.com" />
 <meta property="og:type"               content="website" />
 <meta property="og:title"              content="LAPD Stops 2021 Interactive Mapp" />
 <meta property="og:description"        content="iew interactive heatmap of LAPD Stops in 2021. Explore where LAPD Stopped the most people and download data of stops." />
-<meta property="og:image"              content="https://lapdstops.mejiaforcontroller.com/preview.png" />
+<meta property="og:image"              content="https://parkingfines.mejiaforcontroller.com/preview.png" />
 
 <script defer={true} src="https://helianthus.mejiaforcontroller.com/index.js"></script>
       </Head>
