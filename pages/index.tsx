@@ -5,7 +5,7 @@ import Image from 'next/image'
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import MapboxLanguage from '@mapbox/mapbox-gl-language';
 
-
+import { uploadMapboxTrack } from '../components/mapboxtrack';
 import Nav from '../components/nav'
 
 import React, {useEffect} from 'react';
@@ -258,7 +258,46 @@ map.addControl(new mapboxgl.NavigationControl());
   checkHideOrShowTopRightGeocoder()
 });
 
-       
+map.on('dragstart', (e) => {
+  uploadMapboxTrack({
+    mapname: 'lapdstops',
+    eventtype: 'dragstart',
+    globallng: map.getCenter().lng,
+    globallat: map.getCenter().lat,
+    globalzoom: map.getZoom()
+  })
+  })
+  
+  map.on('dragend', (e) => {
+    uploadMapboxTrack({
+      mapname: 'lapdstops',
+      eventtype: 'dragend',
+      globallng: map.getCenter().lng,
+      globallat: map.getCenter().lat,
+      globalzoom: map.getZoom()
+    })
+    })
+  
+    map.on('zoomstart', (e) => {
+      uploadMapboxTrack({
+        mapname: 'lapdstops',
+        eventtype: 'dragstart',
+        globallng: map.getCenter().lng,
+        globallat: map.getCenter().lat,
+        globalzoom: map.getZoom()
+      })
+      })
+  
+      map.on('zoomend', (e) => {
+        uploadMapboxTrack({
+          mapname: 'lapdstops',
+          eventtype: 'zoomend',
+          globallng: map.getCenter().lng,
+          globallat: map.getCenter().lat,
+          globalzoom: map.getZoom()
+        })
+        })
+         
 
   }, [])
 
@@ -272,25 +311,25 @@ map.addControl(new mapboxgl.NavigationControl());
 name="description"
 content="Heatmap of Top Parking Fine Locations in Los Angeles."
 />
-<title>Parking Tickets Los Angeles Interactive Map - Mejia For Controller</title>
+<title>LAPD 2021 Stops Interactive Map - Mejia For Controller</title>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:site" content="@kennethmejiala"/>
 <meta name="twitter:creator" content="@kennethmejiala"/>
-<meta name="twitter:title" content="Parking Tickets Los Angeles Interactive Map"/>
-<meta name="twitter:description" content="View interactive heatmap of 2021 parking fines in LA. See most ticketed parking spots and explore data."/>
-<meta name="description" content="View interactive heatmap of 2021 parking fines in LA. See most ticketed parking spots and explore data." />
-<meta name="twitter:image" content="https://ParkingTicketsLA.mejiaforcontroller.com/preview.png"/>
+<meta name="twitter:title" content="LAPD Stops 2021 Interactive Map"/>
+<meta name="twitter:description" content="View interactive heatmap of LAPD Stops in 2021. Explore where LAPD Stopped the most people and download data."/>
+<meta name="description" content="View interactive heatmap of LAPD Stops in 2021. Explore where LAPD Stopped the most people and download data." />
+<meta name="twitter:image" content="https://lapdstops.mejiaforcontroller.com/preview.png"/>
 <link rel="icon" href="https://mejiaforcontroller.com/wp-content/uploads/2020/12/cropped-favicon-1-32x32.png" sizes="32x32"/>
 <link rel="icon" href="https://mejiaforcontroller.com/wp-content/uploads/2020/12/cropped-favicon-1-192x192.png" sizes="192x192"/>
 <link rel="apple-touch-icon" href="https://mejiaforcontroller.com/wp-content/uploads/2020/12/cropped-favicon-1-180x180.png"/>
 <meta name="msapplication-TileImage" content="https://mejiaforcontroller.com/wp-content/uploads/2020/12/cropped-favicon-1-270x270.png"/>
 
 
-<meta property="og:url"                content="https://ParkingTicketsLA.mejiaforcontroller.com" />
+<meta property="og:url"                content="https://lapdstops.mejiaforcontroller.com" />
 <meta property="og:type"               content="website" />
-<meta property="og:title"              content="Parking Tickets Los Angeles Interactive Map" />
-<meta property="og:description"        content="View interactive heatmap of 2021 parking fines in LA. See most ticketed parking spots and explore data." />
-<meta property="og:image"              content="https://ParkingTicketsLA.mejiaforcontroller.com/preview.png" />
+<meta property="og:title"              content="LAPD Stops 2021 Interactive Mapp" />
+<meta property="og:description"        content="iew interactive heatmap of LAPD Stops in 2021. Explore where LAPD Stopped the most people and download data of stops." />
+<meta property="og:image"              content="https://lapdstops.mejiaforcontroller.com/preview.png" />
 
 <script defer={true} src="https://helianthus.mejiaforcontroller.com/index.js"></script>
       </Head>
