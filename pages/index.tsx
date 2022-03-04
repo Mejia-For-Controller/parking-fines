@@ -21,7 +21,6 @@ import * as turf from '@turf/turf'
 
 const Home: NextPage = () => {
 
-
   function checkHideOrShowTopRightGeocoder() {
     var toprightbox = document.querySelector(".mapboxgl-ctrl-top-right")
    if (toprightbox) {
@@ -311,13 +310,13 @@ map.on('dragstart', (e) => {
 name="description"
 content="Heatmap of Top Parking Fine Locations in Los Angeles."
 />
-<title>LAPD 2021 Stops Interactive Map - Mejia For Controller</title>
+<title>LA Parking Fines 2021 Interactive Map - Mejia For Controller</title>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:site" content="@kennethmejiala"/>
 <meta name="twitter:creator" content="@kennethmejiala"/>
-<meta name="twitter:title" content="LAPD Stops 2021 Interactive Map"/>
-<meta name="twitter:description" content="View interactive heatmap of LAPD Stops in 2021. Explore where LAPD Stopped the most people and download data."/>
-<meta name="description" content="View interactive heatmap of LAPD Stops in 2021. Explore where LAPD Stopped the most people and download data." />
+<meta name="twitter:title" content="LA Parking Fines 2021 Interactive Heatmap"/>
+<meta name="twitter:description" content="Heatmap of Top Parking Fine Locations in Los Angeles in 2021."/>
+<meta name="description" content="Heatmap of Top Parking Fine Locations in Los Angeles." />
 <meta name="twitter:image" content="https://parkingfines.mejiaforcontroller.com/preview.png"/>
 <link rel="icon" href="https://mejiaforcontroller.com/wp-content/uploads/2020/12/cropped-favicon-1-32x32.png" sizes="32x32"/>
 <link rel="icon" href="https://mejiaforcontroller.com/wp-content/uploads/2020/12/cropped-favicon-1-192x192.png" sizes="192x192"/>
@@ -327,8 +326,8 @@ content="Heatmap of Top Parking Fine Locations in Los Angeles."
 
 <meta property="og:url"                content="https://parkingfines.mejiaforcontroller.com" />
 <meta property="og:type"               content="website" />
-<meta property="og:title"              content="LAPD Stops 2021 Interactive Mapp" />
-<meta property="og:description"        content="iew interactive heatmap of LAPD Stops in 2021. Explore where LAPD Stopped the most people and download data of stops." />
+<meta property="og:title"              content="LA Parking Fines 2021 Interactive Heatmap." />
+<meta property="og:description"        content="Heatmap of Top Parking Fine Locations in Los Angeles in 2021. View which spots had the most parking citations." />
 <meta property="og:image"              content="https://parkingfines.mejiaforcontroller.com/preview.png" />
 
 <script defer={true} src="https://helianthus.mejiaforcontroller.com/index.js"></script>
