@@ -111,3 +111,8 @@ scroll-margin-right: 3px;
 .mapboxgl-ctrl-logo {
   display: 'none'
 }
+
+
+.mapboxgl-ctrl-bottom-right {
+  display: none
+}
