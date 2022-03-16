@@ -8,10 +8,9 @@ import MapboxLanguage from '@mapbox/mapbox-gl-language';
 import { uploadMapboxTrack } from '../components/mapboxtrack';
 import Nav from '../components/nav'
 
-import React, {useEffect} from 'react';
- 
-const councildistricts = require('./CouncilDistricts.json')
-const citybounds = require('./citybounds.json')
+import React, {useEffect, useState} from 'react';
+
+
 import * as turf from '@turf/turf'
 
     // added the following 6 lines.
@@ -19,7 +18,25 @@ import * as turf from '@turf/turf'
 
        import { assertDeclareExportAllDeclaration } from '@babel/types';
 
+
+       
+import {DisclaimerPopup} from '../components/Disclaimer'
+ 
+const councildistricts = require('./CouncilDistricts.json')
+const citybounds = require('./citybounds.json')
+
 const Home: NextPage = () => {
+
+  let [disclaimerOpen, setDisclaimerOpen] = useState(false)
+
+  function closeModal() {
+    setDisclaimerOpen(false)
+  }
+
+  function openModal() {
+    setDisclaimerOpen(true)
+  }
+
 
   function checkHideOrShowTopRightGeocoder() {
     var toprightbox = document.querySelector(".mapboxgl-ctrl-top-right")
@@ -352,6 +369,13 @@ content="Heatmap of Top Parking Fine Locations in Los Angeles."
 
 }} className="map-container w-full h-full " />
         
+        <DisclaimerPopup
+        open={disclaimerOpen}
+        openModal={openModal}
+        closeModal={closeModal}
+        />
+
+
      
      <div className={`absolute md:mx-auto z-9 bottom-2 left-1 md:left-1/2 md:transform md:-translate-x-1/2`}>
 <a href='https://MejiaForController.com/' target="_blank" rel="noreferrer">
